@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Security Landing Page</title>
+    <script>
+      document.addEventListener('keydown', function(e) {
+          if (e.key === 'F12') e.preventDefault(); // Block F12
+          if (e.ctrlKey && e.shiftKey && e.key === 'I') e.preventDefault(); // Block Ctrl+Shift+I
+          if (e.ctrlKey && e.shiftKey && e.key === 'C') e.preventDefault(); // Block Ctrl+Shift+C
+          if (e.ctrlKey && e.shiftKey && e.key === 'J') e.preventDefault(); // Block Ctrl+Shift+J
+          if (e.ctrlKey && e.key === 'u') e.preventDefault(); // Block Ctrl+U
+        });
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault(); // Disable right-click
+        });
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'hidden') {
+            document.body.style.filter = 'blur(10px)';
+          } else {
+            document.body.style.filter = 'none';
+          }
+        });
+    </script>
+    <style>
+        /* Transparent Overlay */
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          background: rgba(255, 255, 255, 0.01);
+          pointer-events: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            flex-direction: column;
+        }
+        h1 {
+            color: #66fcf1;
+            text-align: center;
+        }
+        p {
+            color: #45a29e;
+            text-align: center;
+            font-size: 18px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #45a29e;
+            color: #0b0c10;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            width: 200px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        a:hover {
+            background-color: #66fcf1;
+            color: #0b0c10;
+        }
+        .home-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #45a29e;
+            color: #0b0c10;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .home-button:hover {
+            background-color: #66fcf1;
+            color: #0b0c10;
+        }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            color: #c5c6c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ปุ่ม Home -->
+    <a href="home.html" class="home-button" aria-label="Home Button">HOME</a>
+
+    <h1>Welcome to Digital Security Center</h1>
+    <p>เลือกสิ่งที่คุณต้องการสแกน:</p>
+
+    <div class="buttons">
+        <a href="javascript:void(0);" onclick="showAd('network')" aria-label="Network Scan">สแกนเครือข่าย</a>
+        <a href="javascript:void(0);" onclick="showAd('file')" aria-label="File Scan">สแกนไฟล์</a>
+        <a href="javascript:void(0);" onclick="showAd('email')" aria-label="Email Scan">สแกนอีเมล</a>
+    </div>
+
+    <footer>
+        &copy; 2024 Digital Security Solutions. All rights reserved.
+    </footer>
+
+    <script>
+        function showAd(scanType) {
+            const ad = document.createElement('div');
+            ad.style.position = 'fixed';
+            ad.style.top = '0';
+            ad.style.left = '0';
+            ad.style.width = '100%';
+            ad.style.height = '100%';
+            ad.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            ad.style.display = 'flex';
+            ad.style.flexDirection = 'column';
+            ad.style.justifyContent = 'center';
+            ad.style.alignItems = 'center';
+            ad.style.color = '#fff';
+            ad.style.fontSize = '20px';
+            ad.style.zIndex = '1000';
+            ad.innerHTML = `
+                <p
